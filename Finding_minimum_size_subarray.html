@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="ExplanationStyles.css" rel="stylesheet"/>
+
+
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    <title>AlgoHub Explanation</title>
+    <script src="https://kit.fontawesome.com/d37702d77e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css">
+</head>
+<body>
+
+<!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+            <i class="fa-solid fa-laptop-code"></i>
+            TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <div class="navbar__item">
+                <a class="navbar__links" href="index.html">
+                    Home
+                </a>
+            </div>
+            <li class="navbar__item">
+                <a href="/" class="navbar__links">General Information</a>
+            </li>
+            <div class="navbar__item">
+                <a class="navbar__links">Algorithms <i class="fa fa-caret-down"></i></a>
+                <div class="subnav-content">
+                    <a href="Container_With_Most_Water.html">Container With Most Water</a>
+                    <a href="Finding_minimum_size_subarray.html">Min Size Sub-Array</a>
+                    <a href="intersection_of_two_sorted_arrays.html">Intersection Of Two Arrays</a>
+                    <a href="longest_substring_without_repeating_characters.html">Longest Sub-String</a>
+                    <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+                    <a href="Move_Zeroes.html">Move Zeros</a>
+                    <a href="Remove_Duplicates_from_Sorted_Array.html">Remove Duplicates From Sorted Array</a>
+                    <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+                    <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+                    <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+                    <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+                    <a href="ValidPalindrome.html">Valid Palindrome</a>
+                </div>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">Hi-Tech </a>
+            </div>
+            <div class="navbar__btn">
+                <a href="/" class="button">About Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="#intro">Introduction</a>
+    <a href="#Step_By_Step">Explanation</a>
+    <a href="#code_python">Python Code</a>
+    <a href="#example">Example</a>
+    <a href="#Short_Video">Video</a>
+</div>
+
+<!--Main Content-->
+<div class="main__content">
+    <div class="background">
+        <div class="introduction">
+            <h1>Finding the minimum size subarray</h1>
+            <h2><u>Introduction</u></h2>
+            <div class="Side_Position" id="intro"></div>
+            <p>
+                The following problem, also known as the "Minimum Size Subarray Sum" problem, is
+                a common problem in algorithm and data structure. The objective is to find the smallest
+                contiguous subarray whose sum is greater than or equal to a given target value.
+                <br>
+                The Two-Pointer technique, is an effective way to solve this problem.
+                We can iterate over the array with a fixed left pointer and a variable right pointer to find valid
+                subarrays.
+            </p>
+
+            <h2><u>Step By Step Explanation</u></h2>
+            <div class="Side_Position" id="Step_By_Step"></div>
+            <p> Here's a detailed explanation of the problem, along with an approach to
+                solve it:</p>
+            <ol>
+                <li>
+                    We start with two pointers, both are at the beginning of the array. These pointers represent the margins
+                    of our current window.
+                </li>
+                <li>
+                    We move the end pointer to the right, adding numbers to our current window's sum.
+                </li>
+                <li>
+                    As soon as the window's sum becomes equal to or greater than the target, we attempt to shrink the
+                    window from the left to find smaller valid windows that still meet the sum criterion.
+                </li>
+                <li>
+                    Each successful window gives us a potential answer (its size), we keep track of the minimum size
+                    found.
+                </li>
+                <li>
+                    We continue this process until the end pointer reaches the end of the array, and there are no more
+                    subarrays to check.
+                    <br>
+                    If the minimum length of the window is never updated from the initial setting that is larger than
+                    the array length, it means no valid subarray has been found, and we should return 0.
+            </ol>
+            <p> This algorithm ensures efficient finding of the minimum size subarray with a sum greater than or equal
+                to the target value in linear time, O(n), where n is the length of the array. It has O(1) additional
+                space complexity as it only requires a constant amount of extra space.
+            </p>
+            <h2><u>Python Code</u></h2>
+            <div class="Side_Position" id="code_python"></div>
+            <pre>
+                <code class="language-py">
+def min_subarray_len(target, nums):
+    left = 0
+    min_length = float('inf')
+    current_sum = 0
+
+    for right in range(len(nums)):
+        current_sum += nums[right]
+
+        while current_sum >= target:
+            min_length = min(min_length, right - left + 1)
+            current_sum -= nums[left]
+            left += 1
+
+    return min_length if min_length != float('inf') else 0
+
+Example usage
+target = 7
+nums = [2, 3, 1, 2, 4, 3]
+print(min_subarray_len(target, nums))
+# Output: 2 (the subarray [4,3] has a sum of 7)
+    </code>
+</pre>
+
+
+            <h2><u>Example</u></h2>
+            <div class="Side_Position" id="example"></div>
+            <p>
+                For example, if the input array is [2, 3, 1, 2, 4, 3] and the target is 7, the subarray [4, 3] has the
+                smallest length that sums up to 7 or more, so the answer would be the length of this
+                subarray,which is 2.
+            </p>
+            <img src="images/Minimum subarray 1.jpg" height="306" width="660"/>
+            <p>
+                1. When ‘start’ of the subarray is `nums[0]`,
+                a is the minimum size of subarray
+                end = 3 <br>
+
+                2. When ‘start’ of the subarray is `nums[1]`,
+                We know that `nums[1:end+1] < target`,
+                start position of the end of the subarray will be end.
+            </p>
+            <div class="Side_Position" id="Short_Video"></div>
+            <h2><u>Short Explanation Video</u></h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/9UOmXgG4h2U?si=sXRYnL_ytOnB0q7y"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
+<!--Footer Section-->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>About Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Contact Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>Videos</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Social Media</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="" id="footer__logo">
+                    <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a>
+            </div>
+            <p id="website__right">
+                © TwoPointerHub 2024. All rights reserved
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
+
+
+</html>

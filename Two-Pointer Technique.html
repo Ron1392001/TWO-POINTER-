@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="ExplanationStyles.css" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    <title>AlgoHub Explanation</title>
+    <script
+            src="https://kit.fontawesome.com/d37702d77e.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+    />
+</head>
+<body>
+<!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+            <i class="fa-solid fa-laptop-code"></i>
+            TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <div class="navbar__item">
+                <a class="navbar__links" href="index.html"> Home </a>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">General Information</a>
+            </div>
+            <div class="navbar__item">
+                <a class="navbar__links"
+                >Algorithms <i class="fa fa-caret-down"></i
+                ></a>
+                <div class="subnav-content">
+                    <a href="Container_With_Most_Water.html"
+                    >Container With Most Water</a
+                    >
+                    <a href="Finding_minimum_size_subarray.html"
+                    >Min Size Sub-Array</a
+                    >
+                    <a href="intersection_of_two_sorted_arrays.html"
+                    >Intersection Of Two Arrays</a
+                    >
+                    <a href="longest_substring_without_repeating_characters.html"
+                    >Longest Sub-String</a
+                    >
+                    <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+                    <a href="Move_Zeroes.html">Move Zeros</a>
+                    <a href="Remove_Duplicates_from_Sorted_Array.html"
+                    >Remove Duplicates From Sorted Array</a
+                    >
+                    <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+                    <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+                    <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+                    <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+                    <a href="ValidPalindrome.html">Valid Palindrome</a>
+                </div>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">Hi-Tech </a>
+            </div>
+            <div class="navbar__btn">
+                <a href="/" class="button">About Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="#intro">Introduction</a>
+    <a href="#Step_By_Step">Explanation</a>
+    <a href="#code_python">Python Code</a>
+    <a href="#example">Example</a>
+    <a href="#Short_Video">Video</a>
+</div>
+
+<!--Main Content-->
+<div class="main__content">
+    <div class="background">
+        <div class="introduction">
+            <h1>Main Subject</h1>
+
+            <h2><u>Introduction</u></h2>
+
+            <h2><u>Why we chose this Subject</u></h2>
+
+            <h2><u>Mathematical Proof</u></h2>
+
+            <h2><u>Algorithm in different languages </u></h2>
+
+            <h2><u>Our final conclusion </u></h2>
+
+            <h1><u>Article</u></h1>
+            <p>
+            I explain a very common technique used in search algorithms: the two-pointer technique.<br> The first
+            installment, Sliding Window Problems in JavaScript, is not a prerequisite for understanding the material in
+            this article, but it covers another common coding pattern useful for software engineering interview
+            questions and can be read here.
+            </p>
+
+            <p>
+            <h2>Why Two Pointers?</h2>
+            Many questions involving data stored in arrays or linked lists ask us to find sets of data that fit a
+            certain condition or criterion. Enter two pointers: we could solve these problems by brute force using a
+            single iterator, but this often involves nesting loops, which increases the time complexity of a solution
+            exponentially. Instead, we can use two pointers, or iterator variables, to track the beginning and end of
+            subsets within the data, and then check for the condition or criterion.
+            </p>
+            <p>
+            <h2>Recognizing a Two-Pointer Problem</h2>
+            As I am currently strengthening my knowledge of data structures and algorithms, I have found that one of the
+            most difficult things to do is to recognize when I need to use a two-pointer technique, and if I do, which
+            type. This may be obvious to others, but since it was/is not to me, I am going to explain here in some
+            detail.
+            </p>
+            <p>
+            The first clue that a two-pointer approach might be needed is that the problem asks for a set of elements —
+            that fit a certain pattern or constraint — to be found in a sorted array or linked list.
+            </p>
+            <p>
+            In a sorted array, there is additional information about the endpoints as compared to an unsorted array. For example, if an
+            array of integers is sorted in ascending order, we know that the start position of the array is the smallest
+            or most negative integer, and the end position is the greatest or most positive.
+            </p>
+            <p>
+            Therefore, if a problem presents a sorted array, it is very likely able to be solved using a two-pointer technique where the
+            pointers are initially assigned the values of the first and last members of the array. An example of this is
+            illustrated below for further clarification. In a linked list, by contrast, the most likely solution will
+            involve pointers moving in tandem to ‘look’ for the constraint or condition of the problem.
+            </p>
+            <p>
+            The second clue that a two-pointer approach might be needed is that the problem asks for something to be
+            found in, inserted into, or removed from a linked list. Knowing the exact position or length of a linked
+            list means moving through every node before that position (all nodes if length is needed).
+            </p>
+            <p>
+            We know each node in the list is connected to the next node in the list until the tail of the list. In this case, tandem
+            pointers or a fast and slow pointer approach will likely serve to solve the problem. An example of the fast
+            and slow pointer approach is illustrated below.
+            </p>
+            <p>
+            Example: Two Sum Problem with Sorted Input Array
+            Problem: given an array sorted in increasing order, find two numbers such that they add up to a specific
+            target. Return the indices of the two numbers.
+            Constraints: the input array is sorted ascending and will contain exactly one solution. The array is
+            1-indexed.
+            </p>
+            <p>
+           <h2>Pseudocode:</h2>
+            <br>
+            <h3>function(array, target){</h3>
+                <br>
+            set a left pointer to the first element of the array
+                <br>
+            set a right pointer to the last element of the array
+                <br>
+            loop through the array; check if left and right add to target
+                <br>
+            sum is less than the target, increase left pointer
+                <br>
+            sum is greater than the target, decrease right pointer
+                <br>
+            once their sum equals the target, return their indices
+            }
+            </p>
+            <p>
+            The pseudocode illustrates the most classic case of a two-pointer problem, where the pointers start out as
+            the ends of a sorted array.
+            <br>
+            In this case, we are looking for two members of an array to add to a specific
+            target value. Here is the real code, with the pseudocode left in as comments:
+
+            var twoSum = function(numbers, target) {
+
+            // set a left pointer to the first element of the array
+                <br>
+            let left = 1;
+
+            // set a right pointer to the last element of the array
+                <br>
+            let right = numbers.length
+
+            // loop through the array; check if left and right add to target
+                <br>
+            while(numbers[left - 1] + numbers[right - 1] !== target){
+
+            // sum is less than the target, increase left pointer
+                <br>
+            if(numbers[left - 1] + numbers[right - 1] < target){
+            left++
+
+            // sum is greater than the target, decrease right pointer
+                <br>
+            } else {
+            right--
+            }
+            }
+            // once their sum equals the target, return their indices
+                <br>
+            return[left, right]
+            };
+            </p>
+            <p>
+            To practice this problem or try a different solution, check it out on LeetCode.<br>
+            Example: Removing the nth Element from the End of a Linked List
+                <br>
+            Problem: write a function that accepts the head node of a linked list and a number n, and then removes the
+            nth element from the end of the linked list.
+                <br>
+            Constraints: n will be less than the length of the linked list.
+            Pseudocode:
+
+            <h3>function(head, n) {</h3>
+            set up two pointers<br>
+            initially, both should be equal to the head<br>
+            check if the head is the only node + remove it<br>
+            iterate the second pointer n places ahead of the first<br>
+            if the second pointer is null, remove the head (because the head is the nth from the end if this is the
+            case)<br>
+            iterate both pointers until the second pointer is the tail<br>
+            if there is a node two ahead of the first pointer, set it as the next node of the first pointer ('dropping'
+            the nth node)<br>
+            if there is no node two ahead of the first pointer, the first pointer is now the tail and its next should be
+            set to null<br>
+            return head
+            }
+
+            The pseudocode illustrates how this is a two-pointer problem where the iterators move in tandem.
+                <br>Once the two pointers are a distance of n apart in the linked list, they move at the same pace until the second
+            pointer reaches the tail. Here is the actual code, with pseudocode as comments:<br>
+            var removeNthFromEnd = function(head, n) {
+                <br>
+            // set up two pointers
+            // initially, both should be equal to the head
+                <br>
+            let left = head;<br>
+            let right = head; // check if the head is the only node + remove it<br>
+            if(!head.next) return null // iterate the second pointer n places ahead of the first<br>
+            let i = 0;<br>
+            while(i++ < n){<br>
+            right = right.next<br>
+            } // if the second pointer is null, remove the head<br>
+            // (because the head is the nth from the end if this is the case)<br>
+            if(right === null){<br>
+            return head = head.next<br>
+            } // iterate both pointers until the second pointer is the tail<br>
+            while(right && right.next){<br>
+            right = right.next<br>
+            left = left.next<br>
+            }<br>
+
+            // if there is a node two ahead of the first pointer,<br>
+            // set it as the next node of the first pointer<br>
+            // ('dropping' the nth node)<br>
+            // if there is no node two ahead of the first pointer,<br>
+            // the first pointer is now the tail and its next should<br>
+            // be set to null<br>
+            left.next = left.next.next ? left.next.next :<br>
+            null // return head return head<br>
+            };
+            </p>
+
+
+            To practice this problem or try a different solution, check it out on LeetCode.<br>
+            Example: Finding the Middle of a Linked List<br>
+            Problem: given the head of a singly-linked list, find and return the middle node of the list. If there are<br>
+            two middle nodes, return the second.<br>
+            Constraints: the number of nodes will range from 1–100 inclusive.<br>
+            <h2>Pseudocode:</h2>
+            <br>
+            <h3>function(head){</h3>
+            set a slow and a fast pointer to the head<br>
+            iterate the pointers through the list<br>
+            fast should move twice the speed of slow<br>
+            once fast reaches the tail, slow will be at the middle<br>
+            if there are two middles, slow will be at the second middle<br>
+            return slow<br>
+            }<br>
+
+            This is a simple problem of considering the linked list mathematically.
+            <br>
+            The halfway point is half the distance to the endpoint, therefore if we have a slow pointer moving half the speed of the fast pointer, it
+            will sit at the middle node when the fast pointer sits at the tail.
+            <br>
+            Remember that we can define the tail node by the fact that its next node is null. Here is the actual code, with pseudocode as comments:
+
+            <h3>var middleNode = function(head) { </h3>
+            // set a slow and a fast pointer to the head<br>
+            let slow = head;<br>
+            let fast = head; // iterate the pointers through the list<br>
+            while(fast !== null && fast.next !== null){<br>
+            // fast should move twice the speed of slow<br>
+            slow = slow.next<br>
+            fast = fast.next.next<br>
+            } // once fast reaches the tail, slow will be at the middle<br>
+            // if there are two middles, slow will be at the second middle<br>
+            // return slow<br>
+            return slow<br>
+            };<br>
+            <h2> Article Conclusion</h2>
+            To practice this problem or try a different solution, check it out on LeetCode.<br>
+            In this article, and as a part of my own knowledge-building, I have attempted to explain how a certain type
+            of search algorithm can be written using the two-pointer approach.
+            <br>
+            Whether the pointers start together and move in tandem, employ a fast and slow method, or start at opposite ends of an array, these methods save
+            time by reducing the number of loops needed in our code.
+            <br>
+            For more practice problems, check out LeetCode’s brief explanation of the technique and problem list here.
+            <br>
+            For another great in-depth explanation that is not mine, check out this article.
+
+
+        </div>
+    </div>
+</div>
+
+<!--Footer Section-->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>About Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Contact Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>Videos</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Social Media</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="" id="footer__logo">
+                    <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a
+                >
+            </div>
+            <p id="website__right">© TwoPointerHub 2024. All rights reserved</p>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
+</html>

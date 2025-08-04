@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="ExplanationStyles.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>AlgoHub Explanation</title>
+    <script
+      src="https://kit.fontawesome.com/d37702d77e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+    />
+  </head>
+  <body>
+    <!--Navbar Section-->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+          <i class="fa-solid fa-laptop-code"></i>
+          TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+          <div class="navbar__item">
+            <a class="navbar__links" href="index.html"> Home </a>
+          </div>
+          <div class="navbar__item">
+            <a href="/" class="navbar__links">General Information</a>
+          </div>
+          <div class="navbar__item">
+            <a class="navbar__links"
+              >Algorithms <i class="fa fa-caret-down"></i
+            ></a>
+            <div class="subnav-content">
+              <a href="Container_With_Most_Water.html"
+                >Container With Most Water</a
+              >
+              <a href="Finding_minimum_size_subarray.html"
+                >Min Size Sub-Array</a
+              >
+              <a href="intersection_of_two_sorted_arrays.html"
+                >Intersection Of Two Arrays</a
+              >
+              <a href="longest_substring_without_repeating_characters.html"
+                >Longest Sub-String</a
+              >
+              <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+              <a href="Move_Zeroes.html">Move Zeros</a>
+              <a href="Remove_Duplicates_from_Sorted_Array.html"
+                >Remove Duplicates From Sorted Array</a
+              >
+              <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+              <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+              <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+              <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+              <a href="ValidPalindrome.html">Valid Palindrome</a>
+            </div>
+          </div>
+          <div class="navbar__item">
+            <a href="/" class="navbar__links">Hi-Tech </a>
+          </div>
+          <div class="navbar__btn">
+            <a href="/" class="button">About Us</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- The sidebar -->
+    <div class="sidebar">
+      <a href="#intro">Introduction</a>
+      <a href="#Step_By_Step">Explanation</a>
+      <a href="#code_python">Python Code</a>
+      <a href="#example">Example</a>
+      <a href="#Short_Video">Video</a>
+    </div>
+
+    <!--Main Content-->
+    <div class="main__content">
+      <div class="background">
+        <div class="introduction">
+          <h1>Intersection Of Two Sorted Arrays</h1>
+          <h2><u>Introduction</u></h2>
+          <div class="Side_Position" id="intro"></div>
+          <p>
+            The intersection of two sorted arrays problem involves finding the
+            common elements present in both arrays. Given that the arrays are
+            sorted, we can leverage their sorted order to find the intersection
+            efficiently.
+            <br />
+            The Two-Pointer technique is particularly effective for this problem
+            because it leverages the sorted nature of the arrays to efficiently
+            find common elements without needing additional space or complex
+            data structures.
+          </p>
+          <h2><u>Step By Step Explanation</u></h2>
+          <div class="Side_Position" id="Step_By_Step"></div>
+          <p>
+            Here's a detailed explanation of the problem, along with an approach
+            to solve it:
+          </p>
+          <ol>
+            <li>
+              Use two index variables i and j, initial values i = 0, j = 0
+            </li>
+            <li>
+              If arr1[i] is smaller than arr2[j] then print arr1[i] and
+              increment i.
+              <br />
+              If arr1[i] is greater than arr2[j] then print arr2[j] and
+              increment j.
+            </li>
+            <li>
+              Completion: If both are the same size, print any of them and
+              increment both i and j. Print remaining elements of the larger
+              array.
+            </li>
+          </ol>
+
+          <p>
+            This algorithm ensures efficient intersection finding in linear
+            time, O(m + n), where m and n are the lengths of nums1 and nums2,
+            respectively. It has O(1) additional space complexity as it only
+            requires space for storing the intersection elements.
+          </p>
+          <h2><u>Python Code</u></h2>
+          <div class="Side_Position" id="code_python"></div>
+          <pre>
+                <code class="language-py">
+    def intersect(nums1, nums2):
+    intersection = []
+    i, j = 0, 0
+
+    while i < len(nums1) and j < len(nums2):
+        if nums1[i] == nums2[j]:
+            intersection.append(nums1[i])
+            i += 1
+            j += 1
+        elif nums1[i] < nums2[j]:
+            i += 1
+        else:
+            j += 1
+
+    return intersection
+
+    # Example usage
+    nums1 = [1, 2, 2, 3, 4, 5]
+    nums2 = [2, 2, 3, 5]
+    print(intersect(nums1, nums2))  # Output: [2, 2, 3, 5]
+</code>
+</pre>
+
+          <h2><u>Example</u></h2>
+          <div class="Side_Position" id="example"></div>
+          <p>
+            Find the intersection of two sorted arrays OR in other words, given
+            2 sorted arrays, find all the elements which occur in both arrays.
+          </p>
+          <img
+            src="images/union-intersection-two-sorted-array-algorithm.png"
+            alt=""
+            width="700"
+            height="400"
+          />
+          <p>
+            The image illustrates the process of finding the union and
+            intersection of two sorted arrays, Array 1 and Array 2, using a
+            two-pointer technique.<br />
+            Initially, the pointers are at the first elements of both arrays.
+            <br />
+            The smaller value between the two pointed elements (5 from Array 2)
+            is added to the union, and the pointer for Array 2 is incremented.
+            When the values at both pointers are equal (10), the value is added
+            to both the union and intersection, and both pointers are
+            incremented.
+            <br />
+            The process continues, comparing elements and updating the union and
+            intersection accordingly, until all elements are processed.
+          </p>
+
+          <p>
+            <img src="images/intersection 1.jpg" height="182" width="519" />
+          </p>
+
+          <h2><u>Short Explanation Video</u></h2>
+          <div class="Side_Position" id="Short_Video"></div>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/EQQp4B_CU5Q?si=wdn2bEJ7OVUYZKPJ"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer Section-->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__links--wrapper">
+          <div class="footer__links--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__links--items">
+            <h2>Contact Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer__links--wrapper">
+          <div class="footer__links--items">
+            <h2>Videos</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__links--items">
+            <h2>Social Media</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="" id="footer__logo">
+              <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a
+            >
+          </div>
+          <p id="website__right">© TwoPointerHub 2024. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</html>

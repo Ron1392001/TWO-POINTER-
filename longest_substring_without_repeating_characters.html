@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="ExplanationStyles.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    <title>AlgoHub Explanation</title>
+    <script
+            src="https://kit.fontawesome.com/d37702d77e.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+    />
+</head>
+<body>
+<!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+            <i class="fa-solid fa-laptop-code"></i>
+            TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <div class="navbar__item">
+                <a class="navbar__links" href="index.html"> Home </a>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">General Information</a>
+            </div>
+            <div class="navbar__item">
+                <a class="navbar__links"
+                >Algorithms <i class="fa fa-caret-down"></i
+                ></a>
+                <div class="subnav-content">
+                    <a href="Container_With_Most_Water.html"
+                    >Container With Most Water</a
+                    >
+                    <a href="Finding_minimum_size_subarray.html"
+                    >Min Size Sub-Array</a
+                    >
+                    <a href="intersection_of_two_sorted_arrays.html"
+                    >Intersection Of Two Arrays</a
+                    >
+                    <a href="longest_substring_without_repeating_characters.html"
+                    >Longest Sub-String</a
+                    >
+                    <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+                    <a href="Move_Zeroes.html">Move Zeros</a>
+                    <a href="Remove_Duplicates_from_Sorted_Array.html"
+                    >Remove Duplicates From Sorted Array</a
+                    >
+                    <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+                    <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+                    <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+                    <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+                    <a href="ValidPalindrome.html">Valid Palindrome</a>
+                </div>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">Hi-Tech </a>
+            </div>
+            <div class="navbar__btn">
+                <a href="/" class="button">About Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="#intro">Introduction</a>
+    <a href="#Step_By_Step">Explanation</a>
+    <a href="#code_python">Python Code</a>
+    <a href="#example">Example</a>
+    <a href="#Short_Video">Video</a>
+</div>
+
+<!--Main Content-->
+<div class="main__content">
+    <div class="background">
+        <div class="introduction">
+            <h1>Longest Substring</h1>
+            <h2><u>Introduction</u></h2>
+            <div class="Side_Position" id="intro"></div>
+            <p>
+                The problem of finding the longest substring without repeating
+                characters is a common algorithmic challenge often encountered in
+                coding interviews and competitive programming.
+                <br>
+                The objective is to identify the longest contiguous subsequence within a given string
+                such that all the characters in that subsequence are unique.
+                <br/>
+                The Two-Pointer technique, is an efficient way to solve this
+                problem. This method uses two pointers to represent the current
+                window of characters being considered, ensuring that all characters
+                in the window are unique.
+            </p>
+
+            <h2><u>Step By Step Explanation</u></h2>
+            <div class="Side_Position" id="Step_By_Step"></div>
+            <p>follow these steps in order to fine the Longest SubString:</p>
+            <ol>
+                <li>
+                    Dictionary char index: This stores the last index of each
+                    character encountered in the string.
+                </li>
+                <li>
+                    Pointer Initialization: left starts at the beginning (0) of
+                    the string. The right pointer iterates through each character in
+                    the string.
+                </li>
+                <li>
+                    Duplicate Character Handling: If the character at right is found
+                    in char_index and its stored index is greater than or equal to
+                    left, it means there's a duplicate within the current window. In
+                    this case, move the left pointer to one position right of the
+                    last occurrence of the duplicate character.
+                </li>
+                <li>
+                    Update char index: Store/update the current index of the
+                    character at right.
+                </li>
+                <li>
+                    Pointer Movement: The pointers are moved towards each other if the
+                    characters match.
+                </li>
+                <li>
+                    Calculate Window Size: The size of the current window is right -
+                    left + 1. Update max_length if the current window size is
+                    larger.
+                </li>
+                <li>
+                    Completion: Continue the process until the right pointer has
+                    traversed the entire string.
+                </li>
+            </ol>
+            <p>
+                This algorithm ensures that each character is processed at most
+                twice (once by the right pointer and potentially once by the
+                left pointer), resulting in a linear time complexity of O(n),
+                where n is the length of the string. This makes it efficient for
+                solving the problem.
+            </p>
+            <h2><u>Python Code</u></h2>
+            <div class="Side_Position" id="code_python"></div>
+            <pre>
+                <code class="language-py">
+def length_of_longest_substring(s):
+char_index = {}
+left = 0
+max_length = 0
+
+for right in range(len(s)):
+    if s[right] in char_index and char_index[s[right]] >= left:
+        # Move the left pointer to the right of the last occurrence of the
+        # duplicate character
+        left = char_index[s[right]] + 1
+
+    # Update the last occurrence of the current character
+    char_index[s[right]] = right
+
+    # Calculate the current window size and update max_length if it's larger
+    current_length = right - left + 1
+    max_length = max(max_length, current_length)
+
+return max_length
+                
+
+# Example usage
+s = "abcabcbb"
+print(length_of_longest_substring(s))  # Output: 3 ("abc")
+
+s = "bbbbb"
+print(length_of_longest_substring(s))  # Output: 1 ("b")
+
+s = "pwwkew"
+print(length_of_longest_substring(s))  # Output: 3 ("wke")
+
+    </code>
+</pre>
+
+            <h2><u>Example</u></h2>
+            <div class="Side_Position" id="example"></div>
+            <p>
+                Run a loop from i = 0 till N – 1 and consider a visited array.<br>
+                Run a nested loop from j = i + 1 to N – 1 and check whether the
+                current character S[j] has already been visited.<br>
+                If true, break from the loop and consider the next window.<br>
+                Else, mark the current character as visited and maximize the length
+                as j – i + 1.<br>
+                Remove the first character of the previous window and continue.<br>
+            </p>
+
+            <img
+                    src="images/Longest%20substring.png"
+                    alt=""
+                    width="500"
+                    height="400"
+            />
+            <div class="Side_Position" id="Short_Video"></div>
+            <h2><u>Short Explanation Video</u></h2>
+            <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/FCbOzdHKW18?si=1W9lDKGu7t6UJqc7"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+<!--Footer Section-->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>About Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Contact Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>Videos</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Social Media</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="" id="footer__logo">
+                    <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a
+                >
+            </div>
+            <p id="website__right">© TwoPointerHub 2024. All rights reserved</p>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
+</html>

@@ -1,0 +1,148 @@
+html, body {
+    height: 100%;
+    background-color: #141414;
+    color: white; /* Ensures text is readable on a black background */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(145deg, #343a40, #4e555b); /* Gradient background */
+    position: fixed;
+    top: 60px; /* Adjust this value to match the navbar height */
+    left: 0;
+    height: calc(100% - 50px); /* Subtract the navbar height from the total height */
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Add shadow for 3D effect */
+    overflow-y: auto; /* Enable scrolling if content exceeds viewport height */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffffff;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    width: 100%; /* Make sure the link takes the full width of the sidebar */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Add a subtle divider */
+    transition: background-color 0.3s, padding-left 0.3s; /* Smooth transitions */
+}
+
+.sidebar a:hover {
+    background-color: #669bbc;
+    padding-left: 30px; /* Indent slightly on hover */
+}
+
+.sidebar a i {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Customize Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #2e2e2e;
+}
+
+
+div.content {
+    margin-left: 300px; /* Adjust to ensure main content does not overlap the sidebar */
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+.main__content {
+    margin-left: 220px; /* Adjust according to your sidebar width */
+    padding: 20px;
+}
+
+.background {
+    background-color: #141414;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.introduction {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.introduction h1 {
+    font-size: 3.5em;
+    color: #ffffff;
+    text-align: center;
+    Padding-top: 70px;
+}
+
+.introduction h2 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.introduction p {
+    font-size: 1.2em;
+    color: #fdf0d5;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.introduction ol {
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.introduction ol li {
+    font-size: 1.2em;
+    color: #fdf0d5;
+    padding: 5px;
+}
+
+.introduction ol li ul {
+    margin-top: 5px;
+    font-size: 16px;
+    list-style-type: disc;
+}
+
+.introduction ol li ul li {
+    font-size: 16px;
+}
+
+.introduction pre code {
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #333;
+    border-left: 5px solid #333;
+    overflow-x: auto;
+    width: 80%;
+
+}
+
+.Side_Position {
+    position: relative;
+    top: -145px;
+}
+
+#Short_Video {
+    margin-bottom: 20px;
+}
+
+

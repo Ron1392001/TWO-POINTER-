@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="ExplanationStyles.css" rel="stylesheet" />
+
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <title>AlgoHub Explanation</title>
+    <script
+      src="https://kit.fontawesome.com/d37702d77e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+    />
+  </head>
+  <body>
+    <!--Navbar Section-->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+          <i class="fa-solid fa-laptop-code"></i>
+          TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+          <div class="navbar__item">
+            <a class="navbar__links" href="index.html"> Home </a>
+          </div>
+          <div class="navbar__item">
+            <a href="/" class="navbar__links">General Information</a>
+          </div>
+          <div class="navbar__item">
+            <a class="navbar__links"
+              >Algorithms <i class="fa fa-caret-down"></i
+            ></a>
+            <div class="subnav-content">
+              <a href="Container_With_Most_Water.html"
+                >Container With Most Water</a
+              >
+              <a href="Finding_minimum_size_subarray.html"
+                >Min Size Sub-Array</a
+              >
+              <a href="intersection_of_two_sorted_arrays.html"
+                >Intersection Of Two Arrays</a
+              >
+              <a href="longest_substring_without_repeating_characters.html"
+                >Longest Sub-String</a
+              >
+              <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+              <a href="Move_Zeroes.html">Move Zeros</a>
+              <a href="Remove_Duplicates_from_Sorted_Array.html"
+                >Remove Duplicates From Sorted Array</a
+              >
+              <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+              <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+              <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+              <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+              <a href="ValidPalindrome.html">Valid Palindrome</a>
+            </div>
+          </div>
+          <div class="navbar__item">
+            <a href="/" class="navbar__links">Hi-Tech </a>
+          </div>
+          <div class="navbar__btn">
+            <a href="/" class="button">About Us</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- The sidebar -->
+    <div class="sidebar">
+      <a href="#intro">Introduction</a>
+      <a href="#Step_By_Step">Explanation</a>
+      <a href="#code_python">Python Code</a>
+      <a href="#example">Example</a>
+      <a href="#Short_Video">Video</a>
+    </div>
+
+    <!--Main Content-->
+    <div class="main__content">
+      <div class="background">
+        <div class="introduction">
+          <h1>Move Zeroes</h1>
+          <h2><u>Introduction</u></h2>
+          <div class="Side_Position" id="intro"></div>
+          <p>
+            In the Move Zeroes problem, we are given an array and we have to
+            move all the zeroes to the end of the array, while the non-zero
+            elements should maintain the respective order.
+            <br /><br />
+            The Two-Pointer technique is an efficient way to solve the Move
+            Zeroes problem. <br />By strategically using two pointers, we can
+            rearrange the elements in-place without requiring additional space,
+            making this approach both time and space efficient.
+            <br />
+          </p>
+          <h2><u>Step By Step Explanation</u></h2>
+          <div class="Side_Position" id="Step_By_Step"></div>
+          <ol>
+            <li>Iterate the array from 0 to N.</li>
+            <li>
+              Keep two pointers, one for zero elements and other for non-zero
+              elements.
+            </li>
+            <li>
+              Swap every zero elements with the non-zero element that comes just
+              after it.
+            </li>
+          </ol>
+          <p>
+            This approach ensures the algorithm runs in linear time,
+            <u>O(n)</u>, since the array is loop once.
+          </p>
+          <h2><u>Python Code</u></h2>
+          <div class="Side_Position" id="code_python"></div>
+          <pre>
+                <code class="language-py">
+    def moveZerosToEnd(nums):
+        j = 0
+
+        for i in range(len(nums)):
+            if nums[i]!= 0 and nums[j]== 0:
+                nums[i], nums[j]= nums[j], nums[i]
+            if nums[j]!= 0:
+                j+= 1
+
+
+    # Function to print the array elements
+    def printArray(arr, n):
+        for i in range(0, n):
+            print(arr[i],end=" ")
+                  </code>
+</pre>
+          <h2><u>Example</u></h2>
+          <div class="Side_Position" id="example"></div>
+          <p>
+            Input: arr[]={8, 9, 0, 1, 2, 0, 3}
+            <br />
+            Output: arr[]={8, 9, 1, 2, 3, 0, 0} <br />
+            Explanation: <br />
+            Swap {0 ,1} -> Resulting array {8, 9, 1, 0, 2, 0, 3} <br />
+            Swap {0 ,2} -> Resulting array {8, 9, 1, 2, 0, 0, 3} <br />
+            Swap {0 ,3} -> Final array {8, 9, 1, 2, 3, 0, 0}
+            <br />
+            <br />
+            Input: arr[]={2, 5, 7, 0, 4, 0, 7, -5, 8, 0} <br />
+            Output: arr[]={2, 5, 7, 4, 7, -5, 8, 0 ,0 ,0 }
+          </p>
+
+          <img src="images/move zeors .png" height="461" width="470" />
+          <p>
+            In the example array [2, 5, 7, 0, 4, 0, 7, -5, 8, 0], a two-pointer
+            technique is used where one pointer (right) scans the array, and the
+            other pointer (left) tracks where to place the next non-zero
+            element.
+            <br />
+            As right encounters non-zero elements, they are swapped with
+            elements at the left pointer, which is then incremented, resulting
+            in non-zero elements moving to the front while zeroes shift to the
+            end. After completing the scan, the modified array is [2, 5, 7, 4,
+            7, -5, 8, 0, 0, 0].
+          </p>
+
+          <h2><u>Short Explanation Video</u></h2>
+          <div class="Side_Position" id="Short_Video"></div>
+
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/k5lIW5XxC7g?si=LrUmIMRZ3x8Hsbur"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer Section-->
+    <div class="footer__container">
+      <div class="footer__links">
+        <div class="footer__links--wrapper">
+          <div class="footer__links--items">
+            <h2>About Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__links--items">
+            <h2>Contact Us</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+        <div class="footer__links--wrapper">
+          <div class="footer__links--items">
+            <h2>Videos</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer__links--items">
+            <h2>Social Media</h2>
+            <a href="/">How it works</a>
+            <a href="/">Testimonials</a>
+            <a href="/">Careers</a>
+            <a href="/">Investments</a>
+            <a href="/">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="social__media">
+        <div class="social__media--wrap">
+          <div class="footer__logo">
+            <a href="" id="footer__logo">
+              <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a
+            >
+          </div>
+          <p id="website__right">© TwoPointerHub 2024. All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</html>
+>

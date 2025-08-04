@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="ExplanationStyles.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    <title>AlgoHub Explanation</title>
+    <script
+            src="https://kit.fontawesome.com/d37702d77e.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+    />
+</head>
+<body>
+<!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+            <i class="fa-solid fa-laptop-code"></i>
+            TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <div class="navbar__item">
+                <a class="navbar__links" href="index.html"> Home </a>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">General Information</a>
+            </div>
+            <div class="navbar__item">
+                <a class="navbar__links"
+                >Algorithms <i class="fa fa-caret-down"></i
+                ></a>
+                <div class="subnav-content">
+                    <a href="Container_With_Most_Water.html"
+                    >Container With Most Water</a
+                    >
+                    <a href="Finding_minimum_size_subarray.html"
+                    >Min Size Sub-Array</a
+                    >
+                    <a href="intersection_of_two_sorted_arrays.html"
+                    >Intersection Of Two Arrays</a
+                    >
+                    <a href="longest_substring_without_repeating_characters.html"
+                    >Longest Sub-String</a
+                    >
+                    <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+                    <a href="Move_Zeroes.html">Move Zeros</a>
+                    <a href="Remove_Duplicates_from_Sorted_Array.html"
+                    >Remove Duplicates From Sorted Array</a
+                    >
+                    <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+                    <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+                    <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+                    <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+                    <a href="ValidPalindrome.html">Valid Palindrome</a>
+                </div>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">Hi-Tech </a>
+            </div>
+            <div class="navbar__btn">
+                <a href="/" class="button">About Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="#intro">Introduction</a>
+    <a href="#Step_By_Step">Explanation</a>
+    <a href="#code_python">Python Code</a>
+    <a href="#example">Example</a>
+    <a href="#Short_Video">Video</a>
+</div>
+
+<!--Main Content-->
+<div class="main__content">
+    <div class="background">
+        <div class="introduction">
+            <h1>Finding Valid Palindrome</h1>
+            <h2><u>Introduction</u></h2>
+            <div class="Side_Position" id="intro"></div>
+            <p>
+                A valid palindrome is a string that reads the same backward as
+                forward, ignoring case, punctuation, spaces, and other
+                non-alphanumeric characters. In other words, when the string is
+                processed to remove all non-alphanumeric characters and converted to
+                the same case, it should look the same when reversed.<br/>
+                The Two-Pointer technique is an efficient way to determine if a
+                string is a palindrome. This method involves using two pointers to
+                compare characters from the beginning and end of the string, moving
+                towards the center.
+            </p>
+            <h2><u>Step By Step Explanation</u></h2>
+            <div class="Side_Position" id="Step_By_Step"></div>
+            <p> To check if a string is a valid palindrome, one typically follows
+                these steps:</p>
+          
+            <ol>
+                <li>
+                    Helper Function: is_alphanumeric(c) checks if a character is
+                    alphanumeric using c.isalnum().
+                </li>
+                <li>
+                    Pointer Initialization: left starts at the beginning (0) and right
+                    at the end (len(s) - 1) of the string.
+                </li>
+                <li>
+                    Character Skipping: The inner while loops ensure that left and
+                    right skip over non-alphanumeric characters.
+                </li>
+                <li>
+                    Character Comparison: The characters at the left and right
+                    pointers are compared after converting them to lowercase.
+                </li>
+                <li>
+                    Pointer Movement: The pointers are moved towards each other if the
+                    characters match.
+                </li>
+                <li>
+                    Early Termination: If a mismatch is found, the function
+                    immediately returns False.
+                </li>
+                <li>
+                    Completion Check: If the pointers cross each other without finding
+                    a mismatch, the function returns True, indicating the string is a
+                    valid palindrome.
+                </li>
+            </ol>
+            <p>
+                This approach ensures the algorithm runs in linear time,
+                <u>O(n)</u>, where n is the length of the string, making it
+                efficient.
+            </p>
+
+            <h2><u>Python Code</u></h2>
+            <div class="Side_Position" id="code_python"></div>
+            <pre>
+                <code class="language-py">
+def is_valid_palindrome(s):
+    # Helper function to determine if a character is alphanumeric
+    def is_alphanumeric(c):
+        return c.isalnum()
+
+    # Initialize pointers
+    left, right = 0, len(s) - 1
+
+    while left < right:
+        # Move left pointer to the next alphanumeric character
+        while left < right and not is_alphanumeric(s[left]):
+            left += 1
+
+        # Move right pointer to the previous alphanumeric character
+        while left < right and not is_alphanumeric(s[right]):
+            right -= 1
+
+        # Compare characters at left and right pointers
+        if s[left].lower() != s[right].lower():
+            return False
+
+        # Move pointers towards each other
+        left += 1
+        right -= 1
+
+    return True
+
+# Example usage
+s1 = "A man, a plan, a canal: Panama"
+print(is_valid_palindrome(s1)) # Output: True
+
+s2 = "race a car"
+print(is_valid_palindrome(s2)) # Output: False
+    </code>
+</pre>
+
+
+            <h2><u>Example</u></h2>
+            <div class="Side_Position" id="example"></div>
+            <p>
+                Here is a visualization of what is going on in the while loop, using
+                the number 9876789 as our test case:
+            </p>
+
+            <img
+                    src="images/Valid_Palindrome_1.webp"
+                    alt="Girl in a jacket"
+                    width="630"
+                    height="150"
+            />
+
+            <p>
+                This is where the pointers will be the very first time we enter our
+                while loop. It will see that 9 is equal to 9, so it will continue
+                through with incrementing our left pointer and decrementing our
+                right pointer.
+            </p>
+
+            <img
+                    src="images/Valid_Palindrome_2.webp"
+                    alt="Girl in a jacket"
+                    width="630"
+                    height="150"
+            />
+            <p>
+                This is the second iteration through the while loop. Each pointer
+                has moved and now 8 is being checked versus 8. We will continue
+                through our loop.
+            </p>
+            <img
+                    src="images/Valid_Palindrome_3.webp"
+                    alt="Girl in a jacket"
+                    width="630"
+                    height="150"
+            />
+            <p>
+                This is the third time through the loop and the pointers are now at
+                7 & 7. This will not hit our conditional inside the loop and will
+                keep going.
+            </p>
+            <img
+                    src="images/Valid_Palindrome_4.webp"
+                    alt="Girl in a jacket"
+                    width="630"
+                    height="150"
+            />
+            <p>
+                At this point, the left and right pointers are now equal to each
+                other and the condition of the while loop has been met to break out
+                of the loop. We can now return true.
+            </p>
+            <p>
+                The two pointer technique can lead you to a solution that has an
+                efficient time complexity. This solution has an O(N) time
+                complexity. In the worst case scenario, which is that an integer is
+                in fact a palindrome, we only have to loop through half the length
+                of our integer.
+            </p>
+            <h2><u>Short Explanation Video</u></h2>
+            <div class="Side_Position" id="Short_Video"></div>
+
+            <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/UXVHeXNO9AA?si=jK1eHm6d-WN6PhIt"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+            >
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<!--Footer Section-->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>About Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Contact Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>Videos</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Social Media</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="" id="footer__logo">
+                    <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a
+                >
+            </div>
+            <p id="website__right">© TwoPointerHub 2024. All rights reserved</p>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
+</html>

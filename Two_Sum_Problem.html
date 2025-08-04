@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="styles.css" rel="stylesheet"/>
+    <link href="ExplanationStyles.css" rel="stylesheet"/>
+
+    <meta charset="UTF-8"/>
+    <meta
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+    />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+    <title>AlgoHub Explanation</title>
+    <script
+            src="https://kit.fontawesome.com/d37702d77e.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/panda-syntax-dark.min.css"
+    />
+</head>
+<body>
+<!--Navbar Section-->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="index.html" id="navbar__logo">
+            <i class="fa-solid fa-laptop-code"></i>
+            TwoPointerHub
+        </a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <div class="navbar__item">
+                <a class="navbar__links" href="index.html"> Home </a>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">General Information</a>
+            </div>
+            <div class="navbar__item">
+                <a class="navbar__links"
+                >Algorithms <i class="fa fa-caret-down"></i
+                ></a>
+                <div class="subnav-content">
+                    <a href="Container_With_Most_Water.html"
+                    >Container With Most Water</a
+                    >
+                    <a href="Finding_minimum_size_subarray.html"
+                    >Min Size Sub-Array</a
+                    >
+                    <a href="intersection_of_two_sorted_arrays.html"
+                    >Intersection Of Two Arrays</a
+                    >
+                    <a href="longest_substring_without_repeating_characters.html"
+                    >Longest Sub-String</a
+                    >
+                    <a href="Merge_Sorted_Array.html">Merge Sorted Array</a>
+                    <a href="Move_Zeroes.html">Move Zeros</a>
+                    <a href="Remove_Duplicates_from_Sorted_Array.html"
+                    >Remove Duplicates From Sorted Array</a
+                    >
+                    <a href="Reversing_a_linked_list.html">Reverse Linked List</a>
+                    <a href="Three_Sum_Problem.html">Three Sum Problem</a>
+                    <a href="Two_Sum_Problem.html">Two Sum Problem</a>
+                    <a href="Trapping_Rain_Water.html">Trapping Rain Water</a>
+                    <a href="ValidPalindrome.html">Valid Palindrome</a>
+                </div>
+            </div>
+            <div class="navbar__item">
+                <a href="/" class="navbar__links">Hi-Tech </a>
+            </div>
+            <div class="navbar__btn">
+                <a href="/" class="button">About Us</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="#intro">Introduction</a>
+    <a href="#Step_By_Step">Explanation</a>
+    <a href="#code_python">Python Code</a>
+    <a href="#example">Example</a>
+    <a href="#Short_Video">Video</a>
+</div>
+
+<!--Main Content-->
+<div class="main__content">
+    <div class="background">
+        <div class="introduction">
+            <h1>Two Sum Problem</h1>
+            <h2><u>Introduction</u></h2>
+            <div class="Side_Position" id="intro"></div>
+            <p>
+                Given an array of integers and a target sum, find two numbers in the
+                array that add up to the target sum with using Two-Pointer
+                technique.
+
+                <br>The Two-Pointer technique is a powerful tool for solving
+                array-related problems. <br>
+                However, for the standard Two Sum problem where the order of indices
+                matters and we need to return the original indices, the Two-Pointer
+                technique isn't directly applicable. <br>
+                Instead, the two-pointer technique is most effective when the array
+                is sorted, and we need to find pairs that sum up to a given target.
+            </p>
+            <h2><u>Step By Step Explanation</u></h2>
+            <div class="Side_Position" id="Step_By_Step"></div>
+            <ol>
+                <li>Has Array Two Candidates (A[], ar_size, sum)</li>
+                <li>Sort the array in non-decreasing order.</li>
+                <li>
+                    Initialize two index variables to find the candidate elements in
+                    the sorted array.
+                </li>
+                <li>Initialize first to the leftmost index: l = 0</li>
+                <li>Initialize second the rightmost index: r = ar_size-1</li>
+                <li>
+                    Loop while l < r. • If (A[l] + A[r] == sum) then return 1 • Else
+                    if( A[l] + A[r] < sum ) then l++ • Else r–
+                </li>
+                <li>No candidates in the whole array – return 0</li>
+            </ol>
+            <p>
+                This approach ensures the algorithm runs in linear time,
+                <u>O(NlogN)</u>, Time complexity for sorting the array making it
+                efficient.
+            </p>
+            <h2><u>Python Code</u></h2>
+            <div class="Side_Position" id="code_python"></div>
+            <pre>
+                <code class="language-py">
+def hasArrayTwoCandidates(A, arr_size, sum):
+    # Sort the elements
+    A.sort()
+
+    # Initialize two pointers
+    l = 0
+    r = arr_size - 1
+
+    # Now look for the two candidates in the sorted array
+    while l < r:
+        if A[l] + A[r] == sum:
+            return True
+        elif A[l] + A[r] < sum:
+            l += 1
+        else:  # A[l] + A[r] > sum
+            r -= 1
+
+    return False
+
+# Driver program to test above function
+if __name__ == "__main__":
+    A = [1, 4, 45, 6, 10, -8]
+    n = 16
+    arr_size = len(A)
+
+    # Function calling
+    if hasArrayTwoCandidates(A, arr_size, n):
+        print("Yes")
+    else:
+        print("No")
+                  </code>
+</pre>
+            <h2><u>Example</u></h2>
+            <div class="Side_Position" id="example"></div>
+            <p>
+                Let an array be {1, 4, 45, 6, 10, -8} and sum to find be 16 <br/>
+                After sorting the array <br/>
+                A = {-8, 1, 4, 6, 10, 45} <br/>
+                Now, increment ‘l’ when the sum of the pair is less than the
+                required sum and decrement ‘r’ when the sum of the pair is more than
+                the required sum. <br/>
+                This is because when the sum is less than the required sum then to
+                get the number which could increase the sum of pair, start moving
+                from left to right(also sort the array) thus “l++” and vice versa.
+                <br/>
+                <br/>
+                Initialize l = 0, r = 5 <br/>
+                A[l] + A[r] ( -8 + 45) > 16 => decrement r. Now r = 4 <br/>
+                A[l] + A[r] ( -8 + 10) increment l. Now l = 1 <br/>
+                A[l] + A[r] ( 1 + 10) increment l. Now l = 2 <br/>
+                A[l] + A[r] ( 4 + 10) increment l. Now l = 3 <br/>
+                A[l] + A[r] ( 6 + 10) == 16 => Found candidates (return 1)
+            </p>
+
+            <img src="images/Two sum.jpg" height="500" width="600"/>
+            <h2><u>Short Explanation Video</u></h2>
+            <div class="Side_Position" id="Short_Video"></div>
+
+            <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/BoHO04xVeU0?si=6ie15Fio5xJ3gzeg"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+            >
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<!--Footer Section-->
+<div class="footer__container">
+    <div class="footer__links">
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>About Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Contact Us</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer__links--wrapper">
+            <div class="footer__links--items">
+                <h2>Videos</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+            <div class="footer__links--items">
+                <h2>Social Media</h2>
+                <a href="/">How it works</a>
+                <a href="/">Testimonials</a>
+                <a href="/">Careers</a>
+                <a href="/">Investments</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <div class="social__media">
+        <div class="social__media--wrap">
+            <div class="footer__logo">
+                <a href="" id="footer__logo">
+                    <i class="fa-solid fa-laptop-code"></i>TwoPointerHub</a
+                >
+            </div>
+            <p id="website__right">© TwoPointerHub 2024. All rights reserved</p>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
+</html>
